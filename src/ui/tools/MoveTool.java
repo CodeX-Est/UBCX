@@ -1,6 +1,7 @@
 package ui.tools;
 
 import model.Shape;
+import model.Rectangle;
 import ui.DrawingEditor;
 
 import javax.swing.*;

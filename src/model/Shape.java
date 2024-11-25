@@ -6,19 +6,19 @@ import sound.MidiSynth;
 import java.awt.*;
 
 
-public class Shape {
-    private static Color PLAYING_COLOR;
+public abstract class Shape {
+    public static Color PLAYING_COLOR;
 
-    private int x;
-    private int y;
-    private int width;
-    private int height;
+    public int x;
+    public int y;
+    public int width;
+    public int height;
 
-    private boolean selected;
+    public boolean selected;
 
-    private MidiSynth midiSynth;
-    private int instrument;
-    private int playLineCoord;
+    public MidiSynth midiSynth;
+    public int instrument;
+    public int playLineCoord;
 
 
     public Shape(Point topLeft, MidiSynth midiSynth) {
@@ -27,7 +27,7 @@ public class Shape {
         this.midiSynth = midiSynth;
         instrument = 0;
         playLineCoord = 0;
-        PLAYING_COLOR = new Color(230, 158, 60);
+        PLAYING_COLOR = new Color(213, 12, 63);
     }
 
 
@@ -66,7 +66,7 @@ public class Shape {
 
     // REQUIRES: the x,y coordinates of the Point are larger than the x,y coordinates of the shape
     // MODIFIES: this
-    // EFFECTS:  sets the bottom right corner of this Shape to the given Point
+    // EFFECTS:  sets the bottom right corner of this Shape to the given Point**+693m
     public void setBounds(Point bottomRight) {
         width  = bottomRight.x - x;
         height = bottomRight.y - y;

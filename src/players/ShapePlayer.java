@@ -1,13 +1,15 @@
 package players;
 
 import model.Drawing;
+import model.Rectangle;
 import model.Shape;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ShapePlayer implements ActionListener {
+public class
+ShapePlayer implements ActionListener {
     private Shape shape;
     private Drawing drawing;
     private Timer t = null;
@@ -37,7 +39,8 @@ public class ShapePlayer implements ActionListener {
     }
 
     // MODIFIES: this
-    // EFFECTS:  shapes in the current playingColumn are selected and played
+    // EFFECTS:  shapes in the current playingColumn are s
+    // elected and played
     //           the frame is repainted
     private void playColumn() {
         shape.setPlayLineCoord(playingColumn);

@@ -1,8 +1,9 @@
 package ui;
 
-
-import model.Drawing;
 import model.Shape;
+import model.Drawing;
+import model.Rectangle;
+import model.Oval;
 import sound.MidiSynth;
 import ui.tools.*;
 
@@ -87,12 +88,14 @@ public class DrawingEditor extends JFrame {
 
 	// MODIFIES: this
 	// EFFECTS:  adds given Shape to currentDrawing
+    //TODO
 	public void addToDrawing(Shape f) {
 		currentDrawing.addShape(f);
 	}
 
 	// MODIFIES: this
 	// EFFECTS:  removes given Shape from currentDrawing
+    //TODO
 	public void removeFromDrawing(Shape f) {
 		currentDrawing.removeShape(f);
 	}
@@ -101,8 +104,9 @@ public class DrawingEditor extends JFrame {
     //          type of the tool which is currently activeTool
 	private void handleMousePressed(MouseEvent e)  {
 		if (activeTool != null)
+            System.out.println(activeTool);
 			activeTool.mousePressedInDrawingArea(e);
-		repaint();
+            repaint();
 	}
 
     // EFFECTS: if activeTool != null, then mouseReleasedInDrawingArea is invoked on activeTool, depends on the
@@ -151,8 +155,11 @@ public class DrawingEditor extends JFrame {
 		toolArea.setSize(new Dimension(0, 0));
 		add(toolArea, BorderLayout.SOUTH);
 
-        ShapeTool rectTool = new ShapeTool(this, toolArea);
-        tools.add(rectTool);
+        RecTool recTool = new RecTool(this, toolArea);
+        tools.add(recTool);
+
+        OvalTool ovalTool = new OvalTool(this, toolArea);
+        tools.add(ovalTool);
 
         MoveTool moveTool = new MoveTool(this, toolArea);
         tools.add(moveTool);
@@ -169,7 +176,7 @@ public class DrawingEditor extends JFrame {
         PlayDrawingTool playDrawingTool = new PlayDrawingTool(this, toolArea);
         tools.add(playDrawingTool);
 
-        setActiveTool(rectTool);
+        setActiveTool(recTool);
 	}
 
 	public static void main(String args[]) {

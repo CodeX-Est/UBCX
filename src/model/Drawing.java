@@ -68,7 +68,7 @@ public class Drawing extends JPanel {
     // MODIFIES: this
     // EFFECTS:  removes shape from the drawing
 	public void removeShape(Shape shape) {
-		shapes.remove(shape);
+        shapes.remove(shape);
 		repaint();
 	}
 

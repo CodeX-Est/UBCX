@@ -1,6 +1,6 @@
 package ui.tools;
 
-
+import model.Rectangle;
 import model.Shape;
 import ui.DrawingEditor;
 
@@ -9,7 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 
-public class ShapeTool extends Tool {
+abstract class ShapeTool extends Tool {
+    //TODO
 	private Shape shape;
 
     public ShapeTool(DrawingEditor editor, JComponent parent) {
@@ -38,7 +39,8 @@ public class ShapeTool extends Tool {
 	@Override
 	public void mousePressedInDrawingArea(MouseEvent e) {
 		makeShape(e);
-		shape.selectAndPlay();
+		System.out.println(shape);
+        shape.selectAndPlay();
 		shape.setBounds(e.getPoint());
 		editor.addToDrawing(shape);
 	}
@@ -49,27 +51,29 @@ public class ShapeTool extends Tool {
 	@Override
 	public void mouseReleasedInDrawingArea(MouseEvent e) {
         shape.unselectAndStopPlaying();
-	    shape = null;
+        shape = null;
 	}
 
 	// MODIFIES: this
     // EFFECTS:  sets the bounds of thes shape to where the mouse is dragged to
 	@Override
 	public void mouseDraggedInDrawingArea(MouseEvent e) {
-		shape.setBounds(e.getPoint());
+        shape.setBounds(e.getPoint());
 	}
 
-	//EFFECTS: Returns the string for the label.
-	private String getLabel() {
-		return "Shape";
-	}
+//	//EFFECTS: Returns the string for the label.
+//	private String getLabel() {
+//		return "Shape";
+//	}
 
 	//EFFECTS: Constructs and returns the new shape
-	private void makeShape(MouseEvent e) {
-		shape = new Shape(e.getPoint(), editor.getMidiSynth());
-	}
+    //TODO
+	abstract void makeShape(MouseEvent e);
 
-	private class ShapeToolClickHandler implements ActionListener {
+    //EFFECTS: Returns the string for the label.
+    protected abstract String getLabel();
+
+    private class ShapeToolClickHandler implements ActionListener {
 
 		// EFFECTS: sets active tool to the shape tool
 		//          called by the framework when the tool is clicked

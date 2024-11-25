@@ -1,7 +1,8 @@
 package players;
 
-import model.Drawing;
 import model.Shape;
+import model.Drawing;
+import model.Rectangle;
 import ui.DrawingEditor;
 
 import javax.swing.*;
